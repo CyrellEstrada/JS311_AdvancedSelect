@@ -43,15 +43,24 @@ We are going to run a couple SQL queries and put the answers in the "Query Respo
   * CT
   * TX:
   * WY:
+SELECT COUNT(id), state FROM usersAddress GROUP BY state;
 
 2.
   * Area code:
-
+SELECT COUNT(zip), zip FROM usersAddress GROUP BY zip;
 3.
   * first_name:
   * county:
   * county total:
-
+  SELECT 
+MIN(users.first_name),
+usersAddress.county,
+COUNT(*) AS morethan10 FROM users 
+JOIN usersAddress
+WHERE 
+users.id = usersAddress.user_id
+GROUP BY county
+HAVING morethan10 > 10
 
 ## Summary
 
